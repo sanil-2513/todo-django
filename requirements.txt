@@ -3,8 +3,12 @@
 Django==5.2.17
 
 # WSGI server for production
-gunicorn==20.1.0
+# Allow a modern Gunicorn compatible with newer Python (3.14+)
+gunicorn>=20.1.0
 
 # Serve static files in production
 whitenoise==6.5.0
+
+# Ensure pkg_resources is available on the runtime
+setuptools>=68.0.0
 
