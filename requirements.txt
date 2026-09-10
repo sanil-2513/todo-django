@@ -1,0 +1,10 @@
+
+# Core
+Django==5.2.17
+
+# WSGI server for production
+gunicorn==20.1.0
+
+# Serve static files in production
+whitenoise==6.5.0
+
