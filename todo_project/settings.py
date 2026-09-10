@@ -26,8 +26,13 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-z0_0hov-@+fb_w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-# For Render deployment allow all hosts (simple for college project). You can restrict later.
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',')
+# For Render deployment prefer the external hostname if provided, otherwise use
+# ALLOWED_HOSTS env or fallback to '*' for simplicity on college projects.
+render_hostname = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if render_hostname:
+    ALLOWED_HOSTS = [render_hostname]
+else:
+    ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',')
 
 
 # Application definition
