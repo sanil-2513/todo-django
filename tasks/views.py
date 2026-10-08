@@ -3,7 +3,11 @@ from .models import Task
 
 
 def home(request):
-    """Display tasks and create a new task from a POST request."""
+    """Display tasks and create a new task from a POST request.
+
+    :param request: Django HTTP request object.
+    :return: Rendered task page or redirect to home.
+    """
     if request.method == "POST":
         title = request.POST.get("title")
         if title:
@@ -15,7 +19,12 @@ def home(request):
 
 
 def toggle_task(request, task_id):
-    """Toggle the completed status of a task."""
+    """Toggle the completed status of a task.
+
+    :param request: Django HTTP request object.
+    :param task_id: ID of the task to update.
+    :return: Redirect to the home page.
+    """
     if request.method != "POST":
         return redirect("home")
 
@@ -26,7 +35,12 @@ def toggle_task(request, task_id):
 
 
 def delete_task(request, task_id):
-    """Delete a task using its ID."""
+    """Delete a task using its ID.
+
+    :param request: Django HTTP request object.
+    :param task_id: ID of the task to delete.
+    :return: Redirect to the home page.
+    """
     if request.method != "POST":
         return redirect("home")
 
