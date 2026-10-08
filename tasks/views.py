@@ -3,6 +3,7 @@ from .models import Task
 
 
 def home(request):
+    """Display tasks and create a new task from a POST request."""
     if request.method == "POST":
         title = request.POST.get("title")
         if title:
@@ -14,6 +15,7 @@ def home(request):
 
 
 def toggle_task(request, task_id):
+    """Toggle the completed status of a task."""
     if request.method != "POST":
         return redirect("home")
 
@@ -24,6 +26,7 @@ def toggle_task(request, task_id):
 
 
 def delete_task(request, task_id):
+    """Delete a task using its ID."""
     if request.method != "POST":
         return redirect("home")
 
